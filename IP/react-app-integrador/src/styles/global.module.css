@@ -1,0 +1,9 @@
+html{
+    margin: 0;
+    padding: 0;
+    color: white;
+    background-color: #121113;
+}
+.main{
+   align-items: flex-start;
+}
