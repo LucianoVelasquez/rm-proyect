@@ -1,9 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import style from './card.module.css' //Importando stilos.
 
-export default function Card({ personajes, onClose}) {
+export default function Card({onClose,personajes}) {
   return (
-
    <div className={style.card}>
+      <NavLink className={style.link}to={`/detail/${personajes.id}`}> {/* Para direccionarnos al id de la carta */}
       <div className={`${style.cardInner} p-${personajes.id}`}>
          <div className="imga">
             <img className={style.cardImg} src={personajes.image} alt="un personaje" />
@@ -13,11 +14,11 @@ export default function Card({ personajes, onClose}) {
          <h2 className={style.cardH2}>Specie: {personajes.species}</h2>
          <h2 className={style.cardH2}>Gender: {personajes.gender}</h2>
          <h2 className={style.cardH2}>Origin: {personajes.origin.name}</h2>
-         <section className={style.divButton}>
+         <div className={style.divButton}>
             <button className={style.cardButton} onClick={()=>{onClose(personajes.id)}}>x</button>
-         </section>
+         </div>
       </div>
-   </div>
-    
+      </NavLink>
+   </div> 
   );
 }
