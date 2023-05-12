@@ -25,6 +25,7 @@ export default function Detail(){
     return(
         <div className={style.div}>
             <div className={style.divInner}>
+           {/*  <Link className={style.Button}to={'/home'}>Home</Link> */}
                 <section className={style.sectionImg}>
                     <img className={style.imga}src={character.image}></img> 
                 </section>
@@ -35,7 +36,7 @@ export default function Detail(){
                     <h2>Specie: {character.species}</h2>
                     <h2>Gender: {character.gender}</h2>
                     <h2>Origin: {character.origin?.name}</h2> {/* ? -> ese signo es para prevenir errores a la hora de hacer peticiones. */}
-                    <button><Link to={'/home'}>Home</Link></button>
+                    
                 </section>
             </div>
         </div>    

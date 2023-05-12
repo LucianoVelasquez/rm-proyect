@@ -6,12 +6,17 @@ import ima from "./img/icon.svg";
 export default function Nav({ onSearch,logout }) {
   return (
     <div className={style.divNav}>
+
       <Link to={'/home'}> <img className={style.icon} src={ima}/> </Link>
+      
       <section className={style.divSection}>
+
         <Link className={style.Button} to="/home">Home</Link>
         <Link className={style.Button} to="/about">About</Link>
+        <Link className={style.Button} to={'/favorites'}>Favorites</Link>
         
-        <button className={style.Button} onClick={logout}>logout</button>
+        <button className={style.cardButton2} onClick={logout}>Logout</button>
+
       </section>
 
       

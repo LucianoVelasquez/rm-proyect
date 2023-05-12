@@ -7,7 +7,9 @@ export default function Cards({info,onClose}) {
       <div className={style.containerCards}>
          {
            info.map( (character)=>{
-               return <Card personajes={character} onClose={onClose} key={character.id} />
+               return(
+               <Card personajes={character} onClose={onClose} key={character.id} />
+               )
             })
          }
       </div>

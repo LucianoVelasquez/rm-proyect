@@ -8,6 +8,7 @@ import container from './styles/global.module.css'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import Form from "./components/Form/Form";
+import Favorite from "./components/Favorites/Favorites";
 
 export default function App() {
 
@@ -77,6 +78,7 @@ export default function App() {
         <Route path="/home" element={<Cards info={characters} onClose={onClose}/>}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/detail/:id" element={<Detail/>}></Route>
+        <Route path="/favorites" element={<Favorite characters={characters} onClose={onClose}/>}></Route>
       </Routes>
       
     </div> 

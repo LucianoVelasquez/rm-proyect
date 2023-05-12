@@ -9,7 +9,9 @@
 .inputSearch{
     width: 75%;
     margin-right: 8px;
-    
+    background: rgb(255 255 255 / 63%);
+    border: 0;
+    border-radius: 2px;
 }
 .cardButton {
     width: 19%;

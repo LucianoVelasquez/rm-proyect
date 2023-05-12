@@ -34,7 +34,7 @@
     align-items: center;
     text-align: center;
     padding: 3px;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   
   .card:hover {
@@ -55,9 +55,9 @@
     clip-path: circle(50% at 50% 50%);
   }
   .cardButton {
-    width: 88px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    width: 58px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     border: none;
     color: #fff;
     background-image: linear-gradient(30deg, #313234, #5c5d5e);
@@ -89,6 +89,13 @@
     }
   }
 
+.icon{
+  margin-right: 170px;
+}
+.buttonIcon{
+  background: transparent;
+  border: 0;
+}
 .divButton{
 
 }

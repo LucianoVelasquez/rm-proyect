@@ -35,3 +35,38 @@
   border-radius: 64px 8px; 
   border: 0px solid #000000;
 }
+.Button {
+  width: 32px;
+  height: 14px;
+  margin-top: 15px;
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #313234, #5c5d5e);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 0.6em 1.5em;
+  text-decoration: none;
+}
+
+.Button:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+}
+
+@keyframes pulse512 {
+  0% {
+    box-shadow: 0 0 0 0 #8f949566;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+}

@@ -36,7 +36,7 @@ export default function Form({login}) {
         <input className={style.inputForm} name='email' type="text" value={userData.email} onChange={handleChange}></input>
         <p>{erro.email}</p>
         <label  htmlFor="">Password</label>
-        <input className={style.inputForm} name='password' type="text" value={userData.password} onChange={handleChange}></input>
+        <input className={style.inputForm} name='password' type="password" value={userData.password} onChange={handleChange}></input>
         <p>{erro.password}</p>
       <button className={style.buttonForm}>Submit</button>
       </div>
