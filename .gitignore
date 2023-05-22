@@ -1,9 +1,15 @@
+/FT-M2
+/FT-M3-master
+/FT-M3-master.zip
+/./Client/node_modules
+/./Server/node_modules
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
+
 
 # testing
 /coverage

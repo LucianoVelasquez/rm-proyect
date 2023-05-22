@@ -32,19 +32,27 @@ export default function App() {
    */
 
   function onSearch(id) {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+    /* axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
        if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);          
        } else {
           window.alert('¡No hay personajes con este ID!');
        }
-    });
+    }); */
+    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
+    .then((res) => res.json())
+    .then((data)=>{
+      if(data.name){
+        setCharacters((oldChars)=>[...oldChars,data]);
+      }else{
+        alert('Algo salio mal')
+      }
+    })
   }
-  const onClose = (id)=>{
+  const onClose = (id) =>{
+    console.log(id);
     setCharacters(
-      characters.filter((char)=>{
-        return char.id !== Number(id)
-      })
+      characters.filter( (char)=> char.id !== id )
     )
   };
  /*  const login = (userData) =>{
@@ -78,7 +86,7 @@ export default function App() {
         <Route path="/home" element={<Cards info={characters} onClose={onClose}/>}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/detail/:id" element={<Detail/>}></Route>
-        <Route path="/favorites" element={<Favorite characters={characters} onClose={onClose}/>}></Route>
+        <Route path="/favorites" element={<Favorite/>}></Route>
       </Routes>
       
     </div> 

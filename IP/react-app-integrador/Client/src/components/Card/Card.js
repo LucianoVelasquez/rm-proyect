@@ -17,10 +17,6 @@ function Card({onClose,personajes,addFav,removeFav,myFavorites}) {
       });
       
    },[myFavorites]); 
-   
-
-
-   
 
    const handleFavorite = () =>{
       if(isFav){
@@ -58,7 +54,7 @@ function Card({onClose,personajes,addFav,removeFav,myFavorites}) {
             <h2 className={style.cardH2}>Origin: {personajes.origin.name}</h2>
          </NavLink>
             <div className={style.divButton}>
-               <button className={style.cardButton} onClick={()=>{ onClose(personajes.id) }}>x</button>
+               <button className={style.cardButton} onClick={()=>{onClose(personajes.id)}}>x</button>
             </div>
       </div>
    </div> 
