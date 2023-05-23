@@ -5,10 +5,8 @@ const login = (req,res) =>{
     
     users.forEach((user)=>{
         if(user.email === email && user.password === password){
-            console.log('entro');
             return res.status(200).json({access:true})
         }else{
-            console.log('no entro');
             return res.status(200).json({access:false})
         }
     })

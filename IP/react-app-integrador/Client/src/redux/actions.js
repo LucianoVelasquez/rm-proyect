@@ -7,29 +7,35 @@ export const ORDER = 'ORDER'
 
 export const addFav = (character) =>{
     const endpoint = 'http://localhost:3001/rickandmorty/fav';
-    /* return {type: ADDFAV, payload: character} */
-    return (dispatch) => {
-        axios.post(endpoint, character)
-        .then(({ data }) => {
-           return dispatch({
-              type: ADDFAV,
-              payload: data,
-           });
-        });
+
+    return async (dispatch) => {
+      try {
+         const { data } = await axios.post(endpoint, character);
+
+         if(data){
+            return dispatch({type: ADDFAV, payload: data});
+         }else{
+            throw Error();
+         }
+
+      } catch (error) {
+         alert('Error al agregar a favoritos.');
+      }
      };
 }
 
 export const removeFav = (id) =>{
-    /* return {type: REMOVEFAV, payload:id} */
    const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
-   return (dispatch) => {
-      axios.delete(endpoint)
-      .then(({ data }) => {
-         return dispatch({
-            type: 'REMOVE_FAV',
-            payload: data,
-      });
-      });
+
+   return async (dispatch) => {
+      try {
+         const { data } = await axios.delete(endpoint);
+         return dispatch({type:REMOVEFAV, payload: data});
+
+      } catch (error) {
+         console.log('Error al eliminar de favoritos.');
+      }
+
    };
 }
 

@@ -29,28 +29,19 @@ export default function App() {
   }, [access]) */
 
   useEffect(() => {
-    !access && navigate('/');
+    !access && navigate('/home');   //  cambiar '/home' por -> '/' para que el login ande normalmente.
   }, [access]);
   
 
-  function onSearch(id) {
-    /* axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-       if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);          
-       } else {
-          window.alert('¡No hay personajes con este ID!');
-       }
-    }); */
-    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-    .then((res) => res.json())
-    .then((data)=>{
-      if(data.name){
-        setCharacters((oldChars)=>[...oldChars,data]);
-      }else{
-        alert('Algo salio mal')
-      }
-    })
+  async function onSearch(id) {
+    try{
+      const { data }  = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);;
+      setCharacters((oldChars)=>[...oldChars,data]); 
+    }catch(error){
+      alert('Algo salio mal');
+    }
   }
+
   const onClose = (id) =>{
    
     setCharacters(
@@ -58,25 +49,26 @@ export default function App() {
     )
   };
 
-  const login = (userData) => {
-    /* if(email === userData.email && passwarod === userData.password) {
-      localStorage.setItem('name', email)
-      localStorage.setItem('pass', passwarod)
-      setAccess(true);
-    } else alert('Usuario invalido') */
-    
-    const { email, password } = userData;
-    const URL = 'http://localhost:3001/rickandmorty/login/';
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-       const { access } = data;
-       setAccess(data);
-       access && navigate('/home');
-    });
+  const login = async (userData) => {
+    try{
+     const { email, password } = userData;
+     const URL = 'http://localhost:3001/rickandmorty/login/';
+     const { data } = await axios.get(URL + `?email=${email}&password=${password}`); 
+     
+     if(data.access){
+      setAccess(data.access);
+      data.access && navigate('/home');
+     }else{
+      throw Error('Usuario invalido')
+     }
+
+    }catch(error){
+      alert(error.message);
+    }
+  
   }
 
   const logout = () => {
-    localStorage.setItem('name', 0)
-    localStorage.setItem('pass', 0)
     setAccess(false)
     navigate('/')
   }
