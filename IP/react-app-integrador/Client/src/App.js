@@ -10,26 +10,28 @@ import axios from 'axios';
 import Form from "./components/Form/Form";
 import Favorite from "./components/Favorites/Favorites";
 
+
 export default function App() {
 
-  let email = 'vel@gmail.com'; 
-  let passwarod = '1234567';
-  
+  /* let userEmail = 'vel@gmail.com';  */ 
+   
   const [characters,setCharacters] = useState([]); 
   const [access,setAccess] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();  /*Este hook es para capturar la ruta donde se encuentra el usuario. */
   
-  useEffect(() => {
-    if(localStorage.getItem('name') === email) {
+  /* useEffect(() => {
+    console.log(userEmail);
+    if(localStorage.getItem('name') === userEmail) {
       navigate('/home')
     } else navigate('/')
     // eslint-disable-next-line
-  }, [access])
- /*  useEffect(() => {
+  }, [access]) */
+
+  useEffect(() => {
     !access && navigate('/');
   }, [access]);
-   */
+  
 
   function onSearch(id) {
     /* axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
@@ -50,24 +52,26 @@ export default function App() {
     })
   }
   const onClose = (id) =>{
-    console.log(id);
+   
     setCharacters(
       characters.filter( (char)=> char.id !== id )
     )
   };
- /*  const login = (userData) =>{
-    if (userData.password === passwarod && userData.email === email) {
-      setAccess(true);
-      navigate('/home');
-   }
-  } */
 
   const login = (userData) => {
-    if(email === userData.email && passwarod === userData.password) {
+    /* if(email === userData.email && passwarod === userData.password) {
       localStorage.setItem('name', email)
       localStorage.setItem('pass', passwarod)
       setAccess(true);
-    } else alert('Usuario invalido')
+    } else alert('Usuario invalido') */
+    
+    const { email, password } = userData;
+    const URL = 'http://localhost:3001/rickandmorty/login/';
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+       const { access } = data;
+       setAccess(data);
+       access && navigate('/home');
+    });
   }
 
   const logout = () => {

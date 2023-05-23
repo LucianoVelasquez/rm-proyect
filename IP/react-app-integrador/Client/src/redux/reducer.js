@@ -8,16 +8,18 @@ const initialState ={
 export default function reducer(state=initialState,action){
     switch(action.type){
         case ADDFAV:
-            return{
+            /* return{
                 ...state, 
                 myFavorites: [...state.allCharacters,action.payload],
                 allCharacters: [...state.allCharacters,action.payload],
-            }
+            } */
+            return { ...state, myFavorites: action.payload, allCharacters: action.payload };
         case REMOVEFAV:
-            return{
+            /* return{
                 ...state,
                 myFavorites: state.myFavorites.filter(fav => fav.id !== action.payload)
-            }   
+            }   */ 
+            return { ...state, myFavorites: action.payload};
         case FILTER:   
               /* action.payload === 'Todos'? state.allCharacters :  
             state.allCharacters.filter((character) =>  action.payload === 'unknown' ? character.origin.name === 'unknown' :
